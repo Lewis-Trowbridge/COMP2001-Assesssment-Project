@@ -1,16 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 
-#nullable disable
-
 namespace COMP2001_Authentication_API.Models
 {
-    public partial class User
+    public partial class Users
     {
-        public User()
+        public Users()
         {
-            Passwords = new HashSet<Password>();
-            Sessions = new HashSet<Session>();
+            Passwords = new HashSet<Passwords>();
+            Sessions = new HashSet<Sessions>();
         }
 
         public int UserId { get; set; }
@@ -19,7 +17,7 @@ namespace COMP2001_Authentication_API.Models
         public string EmailAddress { get; set; }
         public string Password { get; set; }
 
-        public virtual ICollection<Password> Passwords { get; set; }
-        public virtual ICollection<Session> Sessions { get; set; }
+        public virtual ICollection<Passwords> Passwords { get; set; }
+        public virtual ICollection<Sessions> Sessions { get; set; }
     }
 }
