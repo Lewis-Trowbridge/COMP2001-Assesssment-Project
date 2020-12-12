@@ -14,7 +14,7 @@ namespace COMP2001_Authentication_API.Models
         public int UserId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string EmailAddress { get; set; }
+        public string Email { get; set; }
         public string Password { get; set; }
 
         public virtual ICollection<Passwords> Passwords { get; set; }
