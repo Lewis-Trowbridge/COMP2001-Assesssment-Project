@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Data.SqlClient;
 using COMP2001_Authentication_API.Models;
 
 namespace COMP2001_Authentication_API.Controllers
@@ -77,12 +78,10 @@ namespace COMP2001_Authentication_API.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Users>> PostUsers(Users users)
+        public async Task<IActionResult> Post(Users users)
         {
-            _context.Users.Add(users);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetUsers", new { id = users.UserId }, users);
+            Register(users, out string responseMessage);
+            return Ok(responseMessage);
         }
 
         // DELETE: api/Users/5
@@ -99,6 +98,11 @@ namespace COMP2001_Authentication_API.Controllers
             await _context.SaveChangesAsync();
 
             return users;
+        }
+
+        private void Register(Users user, out string responseMessage)
+        {
+            _context.Register(user, out responseMessage);
         }
 
         private bool UsersExists(int id)
