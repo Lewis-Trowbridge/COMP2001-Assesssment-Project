@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
+using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Data.SqlClient;
@@ -81,7 +82,18 @@ namespace COMP2001_Authentication_API.Controllers
         public async Task<IActionResult> Post(Users users)
         {
             Register(users, out string responseMessage);
-            return Ok(responseMessage);
+            string code = responseMessage.Substring(0, 3);
+            switch (code)
+            {
+                case "200":
+                    Dictionary<string, int> responseDictionary = new Dictionary<string, int>();
+                    responseDictionary.Add("UserID", Convert.ToInt32(responseMessage.Substring(3)));
+                    return new JsonResult(responseDictionary);
+
+
+                default:
+                    return NotFound();
+            }
         }
 
         // DELETE: api/Users/5
