@@ -338,3 +338,4 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+/Auth/COMP2001 Authentication API/COMP2001 Authentication API/.config/dotnet-tools.json

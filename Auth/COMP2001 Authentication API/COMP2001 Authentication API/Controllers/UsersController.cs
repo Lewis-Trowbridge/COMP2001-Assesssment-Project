@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
-using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Data.SqlClient;
@@ -90,6 +89,8 @@ namespace COMP2001_Authentication_API.Controllers
                     responseDictionary.Add("UserID", Convert.ToInt32(responseMessage.Substring(3)));
                     return new JsonResult(responseDictionary);
 
+                case "208":
+                    return StatusCode(208);
 
                 default:
                     return NotFound();
