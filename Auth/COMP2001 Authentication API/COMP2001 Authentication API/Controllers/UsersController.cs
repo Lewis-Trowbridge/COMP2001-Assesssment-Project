@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using BCrypt.Net;
 using COMP2001_Authentication_API.Models;
 
 namespace COMP2001_Authentication_API.Controllers
@@ -65,6 +66,8 @@ namespace COMP2001_Authentication_API.Controllers
         [HttpPost]
         public async Task<IActionResult> Post(Users users)
         {
+            // Hash and salt password with work factor of 12 as per OWASP's guidelines
+            users.Password = BCrypt.Net.BCrypt.HashPassword(users.Password, 12);
             Register(users, out string responseMessage);
             string code = responseMessage.Substring(0, 3);
             switch (code)
