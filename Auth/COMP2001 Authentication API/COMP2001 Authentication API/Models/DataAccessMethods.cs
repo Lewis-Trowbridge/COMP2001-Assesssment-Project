@@ -22,5 +22,13 @@ namespace COMP2001_Authentication_API.Models
             Database.ExecuteSqlRaw("EXEC register @first_name, @last_name, @email, @password, @response_message OUTPUT", parameters);
             responseMessage = (string)parameters[4].Value;
         }
+
+        public bool LookupAPIKey(string apiKey)
+        {
+            // This is where a call to a stored procedure to do a lookup in a database against a hashed version would go, but
+            //  for demonstration purposes we will compare against a hardcoded example key here
+            string tempHardcodedKey = "OTM4NDA5MjM3MDczOTA";
+            return apiKey == tempHardcodedKey;
+        }
     }
 }

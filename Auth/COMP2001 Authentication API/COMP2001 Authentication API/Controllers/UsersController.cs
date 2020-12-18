@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Text.RegularExpressions;
 using Microsoft.EntityFrameworkCore;
 using COMP2001_Authentication_API.Models;
 
@@ -65,20 +66,27 @@ namespace COMP2001_Authentication_API.Controllers
         [HttpPost]
         public async Task<IActionResult> Post(Users users)
         {
-            Register(users, out string responseMessage);
-            string code = responseMessage.Substring(0, 3);
-            switch (code)
+            if (APIKeyIsValid(HttpContext.Request.Headers))
             {
-                case "200":
-                    Dictionary<string, int> responseDictionary = new Dictionary<string, int>();
-                    responseDictionary.Add("UserID", Convert.ToInt32(responseMessage.Substring(3)));
-                    return new JsonResult(responseDictionary);
+                Register(users, out string responseMessage);
+                string code = responseMessage.Substring(0, 3);
+                switch (code)
+                {
+                    case "200":
+                        Dictionary<string, int> responseDictionary = new Dictionary<string, int>();
+                        responseDictionary.Add("UserID", Convert.ToInt32(responseMessage.Substring(3)));
+                        return new JsonResult(responseDictionary);
 
-                case "208":
-                    return StatusCode(208);
+                    case "208":
+                        return StatusCode(208);
 
-                default:
-                    return NotFound();
+                    default:
+                        return NotFound();
+                }
+            }
+            else
+            {
+                return StatusCode(401);
             }
         }
 
@@ -101,6 +109,20 @@ namespace COMP2001_Authentication_API.Controllers
         private void Register(Users user, out string responseMessage)
         {
             _context.Register(user, out responseMessage);
+        }
+
+        private bool APIKeyIsValid(IHeaderDictionary headers)
+        {
+            if (headers.ContainsKey("api-key"))
+            {
+                // Escape string here by using it as a string literal
+                string apiKey = @headers["api-key"];
+                return _context.LookupAPIKey(apiKey);
+            }
+            else
+            {
+                return false;
+            }
         }
 
         private bool UsersExists(int id)
