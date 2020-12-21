@@ -21,7 +21,7 @@
         </ul>
         <div class="justify-content-end"></div>
         <form class="d-flex mx-1 my-2 my-lg-10" action="postcode.php" method="get">
-                <input class="form-control mr-sm-2" id="postcode" name="postcode" type="search" placeholder="Search postcode...">
+                <input class="form-control mr-sm-2" id="postcode" name="postcode" type="search" placeholder="Search postcode..." />
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
     </div>
