@@ -1,6 +1,3 @@
-<?php
-include_once "../src/get_hospital_array.php";
-?>
 <head>
 
     <title>Home</title>
