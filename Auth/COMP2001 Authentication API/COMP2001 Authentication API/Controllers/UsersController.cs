@@ -25,7 +25,17 @@ namespace COMP2001_Authentication_API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetUsers([FromBody] Users user)
         {
-            return Ok();
+            if (APIKeyIsValid(HttpContext.Request.Headers))
+            {
+                bool validated = GetValidation(user);
+                Dictionary<string, bool> validatedDict = new Dictionary<string, bool>();
+                validatedDict.Add("validated", validated);
+                return new JsonResult(validatedDict);
+            }
+            else
+            {
+                return StatusCode(401);
+            }
         }
 
         // PUT: api/Users/5
@@ -109,6 +119,12 @@ namespace COMP2001_Authentication_API.Controllers
         private void Register(Users user, out string responseMessage)
         {
             _context.Register(user, out responseMessage);
+        }
+
+        private bool GetValidation(Users user)
+        {
+            bool validated = _context.Validate(user);
+            return validated;
         }
 
         private bool APIKeyIsValid(IHeaderDictionary headers)

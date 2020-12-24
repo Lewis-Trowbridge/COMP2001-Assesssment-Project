@@ -23,6 +23,17 @@ namespace COMP2001_Authentication_API.Models
             responseMessage = (string)parameters[4].Value;
         }
 
+        public bool Validate(Users userToValidate)
+        {
+            SqlParameter[] parameters = new SqlParameter[3];
+            parameters[0] = new SqlParameter("@email", userToValidate.Email);
+            parameters[1] = new SqlParameter("@password", userToValidate.Password);
+            parameters[2] = new SqlParameter("@validated", -1);
+            parameters[2].Direction = System.Data.ParameterDirection.Output;
+            Database.ExecuteSqlRaw("EXEC @validated = validate_user @email, @password", parameters);
+            return Convert.ToBoolean(parameters[2].Value);
+        }
+
         public bool LookupAPIKey(string apiKey)
         {
             // This is where a call to a stored procedure to do a lookup in a database against a hashed version would go, but
