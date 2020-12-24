@@ -1,0 +1,26 @@
+{
+  "@context": {
+    "places": "https://schema.org/Place",
+    "name": "https://schema.org/name",
+    "description": "https://schema.org/description",
+    "address": "https://schema.org/PostalAddress",
+    "streetAddress": "https://schema.org/streetAddress",
+    "town": "https://schema.org/addressLocality",
+    "county": "https://schema.org/addressRegion",
+    "postcode": "https://schema.org/postalCode",
+    "geo": "https://schema.org/geo",
+    "latitude": {
+      "@id": "https://schema.org/latitude",
+      "@type": "https://schema.org/Number"
+    },
+    "longitude": {
+      "@id": "https://schema.org/longitude",
+      "@type": "https://schema.org/Number"
+    },
+    "pm2.5": {
+      "@id": "https://schema.org/ratingValue",
+      "@type": "https://schema.org/Number"
+    }
+  },
+  "places": []
+}
