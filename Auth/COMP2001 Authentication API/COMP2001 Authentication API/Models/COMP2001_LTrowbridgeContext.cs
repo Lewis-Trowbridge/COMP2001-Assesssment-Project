@@ -33,7 +33,7 @@ namespace COMP2001_Authentication_API.Models
             modelBuilder.Entity<Passwords>(entity =>
             {
                 entity.HasKey(e => e.PasswordId)
-                    .HasName("PK__password__82B1190E8BC0B254");
+                    .HasName("PK__password__82B1190E5FDA27EF");
 
                 entity.ToTable("passwords");
 
@@ -46,20 +46,21 @@ namespace COMP2001_Authentication_API.Models
                 entity.Property(e => e.PasswordText)
                     .IsRequired()
                     .HasColumnName("password_text")
-                    .HasMaxLength(60);
+                    .HasMaxLength(256)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.UserId).HasColumnName("user_id");
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Passwords)
                     .HasForeignKey(d => d.UserId)
-                    .HasConstraintName("FK__passwords__user___2022C2A6");
+                    .HasConstraintName("FK__passwords__user___2C88998B");
             });
 
             modelBuilder.Entity<Sessions>(entity =>
             {
                 entity.HasKey(e => e.SessionId)
-                    .HasName("PK__sessions__69B13FDCD43B06EB");
+                    .HasName("PK__sessions__69B13FDCB549E413");
 
                 entity.ToTable("sessions");
 
@@ -74,18 +75,18 @@ namespace COMP2001_Authentication_API.Models
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Sessions)
                     .HasForeignKey(d => d.UserId)
-                    .HasConstraintName("FK__sessions__user_i__22FF2F51");
+                    .HasConstraintName("FK__sessions__user_i__2F650636");
             });
 
             modelBuilder.Entity<Users>(entity =>
             {
                 entity.HasKey(e => e.UserId)
-                    .HasName("PK__users__B9BE370FB66A422B");
+                    .HasName("PK__users__B9BE370F3AF3EDEE");
 
                 entity.ToTable("users");
 
                 entity.HasIndex(e => e.Email)
-                    .HasName("UQ__users__AB6E616471B45E1F")
+                    .HasName("UQ__users__AB6E6164E01DEA65")
                     .IsUnique();
 
                 entity.Property(e => e.UserId).HasColumnName("user_id");
@@ -108,7 +109,8 @@ namespace COMP2001_Authentication_API.Models
                 entity.Property(e => e.Password)
                     .IsRequired()
                     .HasColumnName("password")
-                    .HasMaxLength(60);
+                    .HasMaxLength(256)
+                    .IsUnicode(false);
             });
 
             OnModelCreatingPartial(modelBuilder);
