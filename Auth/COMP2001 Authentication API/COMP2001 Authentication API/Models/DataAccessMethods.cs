@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Data.SqlTypes;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Data.SqlClient;
 

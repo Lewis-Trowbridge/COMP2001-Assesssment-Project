@@ -119,10 +119,11 @@ namespace COMP2001_Authentication_API.Controllers
 
         private bool APIKeyIsValid(IHeaderDictionary headers)
         {
-            if (headers.ContainsKey("api-key"))
+            string apiKeyTitle = "api_key";
+            if (headers.ContainsKey(apiKeyTitle))
             {
                 // Escape string here by using it as a string literal
-                string apiKey = @headers["api-key"];
+                string apiKey = @headers[apiKeyTitle];
                 return _context.LookupAPIKey(apiKey);
             }
             else
