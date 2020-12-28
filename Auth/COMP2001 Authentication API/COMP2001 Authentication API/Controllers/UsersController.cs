@@ -87,18 +87,17 @@ namespace COMP2001_Authentication_API.Controllers
 
         // DELETE: api/Users/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Users>> DeleteUsers(int id)
+        public async Task<ActionResult<Users>> Delete(int id)
         {
-            var users = await _context.Users.FindAsync(id);
-            if (users == null)
+            if (APIKeyIsValid(HttpContext.Request.Headers))
             {
-                return NotFound();
+                _context.Delete(id);
+                return NoContent();
             }
-
-            _context.Users.Remove(users);
-            await _context.SaveChangesAsync();
-
-            return users;
+            else
+            {
+                return StatusCode(401);
+            }
         }
 
         private void Register(Users user, out string responseMessage)

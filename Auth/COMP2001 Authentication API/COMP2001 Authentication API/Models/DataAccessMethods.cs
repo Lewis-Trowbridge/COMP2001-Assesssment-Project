@@ -45,6 +45,12 @@ namespace COMP2001_Authentication_API.Models
             Database.ExecuteSqlRaw("EXEC update_user @id, @first_name, @last_name, @email, @password", parameters);
         }
 
+        public void Delete(int id)
+        {
+            SqlParameter userIdParameter = new SqlParameter("@id", id);
+            Database.ExecuteSqlRaw("EXEC delete_user @id", userIdParameter);
+        }
+
         private SqlParameter NullIfEmpty(string parameterName, string stringToUpdate)
         {
             // Used to encapsulate the detection of a null value in the case of a blank value passed into the endpoint
