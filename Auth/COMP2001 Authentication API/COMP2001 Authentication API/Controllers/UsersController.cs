@@ -23,7 +23,7 @@ namespace COMP2001_Authentication_API.Controllers
 
         // GET: api/Users
         [HttpGet]
-        public async Task<IActionResult> GetUsers([FromBody] Users user)
+        public async Task<IActionResult> Get([FromBody] Users user)
         {
             if (APIKeyIsValid(HttpContext.Request.Headers))
             {
@@ -42,32 +42,17 @@ namespace COMP2001_Authentication_API.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutUsers(int id, Users users)
+        public async Task<IActionResult> Put(int id, Users users)
         {
-            if (id != users.UserId)
+            if (APIKeyIsValid(HttpContext.Request.Headers))
             {
-                return BadRequest();
+                SendUpdate(id, users);
+                return NoContent();
             }
-
-            _context.Entry(users).State = EntityState.Modified;
-
-            try
+            else
             {
-                await _context.SaveChangesAsync();
+                return StatusCode(401);
             }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!UsersExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
         }
 
         // POST: api/Users
@@ -125,6 +110,11 @@ namespace COMP2001_Authentication_API.Controllers
         {
             bool validated = _context.Validate(user);
             return validated;
+        }
+
+        private void SendUpdate(int id, Users user)
+        {
+            _context.UpdateUser(id, user);
         }
 
         private bool APIKeyIsValid(IHeaderDictionary headers)

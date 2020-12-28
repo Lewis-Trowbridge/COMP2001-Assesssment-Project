@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Data.SqlTypes;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Data.SqlClient;
 
@@ -32,6 +33,30 @@ namespace COMP2001_Authentication_API.Models
             parameters[2].Direction = System.Data.ParameterDirection.Output;
             Database.ExecuteSqlRaw("EXEC @validated = validate_user @email, @password", parameters);
             return Convert.ToBoolean(parameters[2].Value);
+        }
+
+        public void UpdateUser(int id, Users userToUpdate)
+        {
+            SqlParameter[] parameters = new SqlParameter[5];
+            parameters[0] = new SqlParameter("@id", id);
+            parameters[1] = NullIfEmpty("@first_name", userToUpdate.FirstName);
+            parameters[2] = NullIfEmpty("@last_name", userToUpdate.LastName);
+            parameters[3] = NullIfEmpty("@email", userToUpdate.Email);
+            parameters[4] = NullIfEmpty("@password", userToUpdate.Password);
+            Database.ExecuteSqlRaw("EXEC update_user @id, @first_name, @last_name, @email, @password", parameters);
+        }
+
+        private SqlParameter NullIfEmpty(string parameterName, string stringToUpdate)
+        {
+            // Used to encapsulate the detection of a null value in the case of a blank value passed into the endpoint
+            if (stringToUpdate == "")
+            {
+                return new SqlParameter(parameterName, DBNull.Value);
+            }
+            else
+            {
+                return new SqlParameter(parameterName, stringToUpdate);
+            }
         }
 
         public bool LookupAPIKey(string apiKey)
