@@ -23,5 +23,10 @@ function getMarkers(){
         let rowData = tableData[i].children;
         let latitude = parseFloat(rowData[latIndex].textContent);
         let longitude = parseFloat(rowData[lngIndex].textContent);
+        let latLong = { lat: latitude, lng: longitude};
+        new google.maps.Marker({
+            position: latLong,
+            map: map
+        })
     }
 }
