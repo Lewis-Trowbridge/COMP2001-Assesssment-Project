@@ -16,4 +16,12 @@ function getMarkers(){
     let thead = table.children("thead");
     let latIndex = thead.find($("th:contains('Latitude')")).index();
     let lngIndex = thead.find($("th:contains('Longitude')")).index();
+
+    let tableData = table.children("tbody").children();
+
+    for (let i = 0; i < tableData.length; i++){
+        let rowData = tableData[i].children;
+        let latitude = parseFloat(rowData[latIndex].textContent);
+        let longitude = parseFloat(rowData[lngIndex].textContent);
+    }
 }
