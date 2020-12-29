@@ -19,7 +19,7 @@ include_once "../src/get_hospital_array.php";
         </div>
 
         <div class="row">
-            <table class="table">
+            <table id="data-table" class="table">
                 <?php
                 $practice_array = get_hospital_array();
                 $header_array = $practice_array[0];

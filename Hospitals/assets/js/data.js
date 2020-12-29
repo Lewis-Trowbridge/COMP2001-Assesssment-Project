@@ -5,5 +5,15 @@ function initMap(){
         {
             center: { lat: 50.399286606996895, lng: -4.133991435644711},
             zoom: 12
-        })
+        });
+    getMarkers();
+}
+
+function getMarkers(){
+    // Use JQuery selectors to dynamically work out what indexes lat and long should be at
+    // in the table, meaning that the system will not break if the structure or order of the table changes
+    let table = $("#data-table");
+    let thead = table.children("thead");
+    let latIndex = thead.find($("th:contains('Latitude')")).index();
+    let lngIndex = thead.find($("th:contains('Longitude')")).index();
 }
