@@ -32,7 +32,7 @@ function getMarkers(){
         });
         // Create info window containing name of practice at
         let info = new google.maps.InfoWindow({
-            content: rowData[nameIndex]
+            content: rowData[nameIndex].textContent
         });
         // Add event listener to marker to open window when clicked
         marker.addListener("click",() => {
