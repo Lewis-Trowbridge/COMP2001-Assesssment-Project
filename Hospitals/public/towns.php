@@ -1,3 +1,7 @@
+<?php
+include_once "../src/get_towns_average_array.php";
+?>
+
 <head>
     <title>Towns</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous" />
@@ -7,6 +11,11 @@
 <?php
 include_once "header.php";
 ?>
+
+<?php
+
+?>
+
 
 <?php
 include_once "footer.php";
