@@ -3,8 +3,8 @@ let map;
 function initMap(){
     map = new google.maps.Map(document.getElementById("map"),
         {
-            center: { lat: 50.399286606996895, lng: -4.133991435644711},
-            zoom: 12
+            center: { lat: 50.532026, lng: -4.434742},
+            zoom: 10
         });
     getMarkers();
 }
@@ -14,6 +14,7 @@ function getMarkers(){
     // in the table, meaning that the system will not break if the structure or order of the table changes
     let table = $("#data-table");
     let thead = table.children("thead");
+    let nameIndex = thead.find($("th:contains('Name')")).index();
     let latIndex = thead.find($("th:contains('Latitude')")).index();
     let lngIndex = thead.find($("th:contains('Longitude')")).index();
 
@@ -24,9 +25,15 @@ function getMarkers(){
         let latitude = parseFloat(rowData[latIndex].textContent);
         let longitude = parseFloat(rowData[lngIndex].textContent);
         let latLong = { lat: latitude, lng: longitude};
-        new google.maps.Marker({
+        let marker = new google.maps.Marker({
             position: latLong,
             map: map
+        });
+        let info = new google.maps.InfoWindow({
+            content: rowData[nameIndex]
+        });
+        marker.addListener("click",() => {
+            info.open(map, marker);
         })
     }
 }
