@@ -12,11 +12,11 @@ include_once "../src/get_towns_average_array.php";
 include_once "header.php";
 ?>
 
-<table class="table">
+<table class="table table-responsive">
     <thead>
     <tr>
         <th scope="col">Town name</th>
-        <th scope="col">PM<small>2.5</small></th>
+        <th scope="col">PM<small>2.5</small> density</th>
     </tr>
     </thead>
     <tbody>
