@@ -10,7 +10,7 @@ function initMap(){
 }
 
 function getMarkers(){
-    // Use JQuery selectors to dynamically work out what indexes lat and long should be at
+    // Use JQuery selectors to dynamically work out what indexes name, lat and long should be at
     // in the table, meaning that the system will not break if the structure or order of the table changes
     let table = $("#data-table");
     let thead = table.children("thead");
@@ -25,15 +25,20 @@ function getMarkers(){
         let latitude = parseFloat(rowData[latIndex].textContent);
         let longitude = parseFloat(rowData[lngIndex].textContent);
         let latLong = { lat: latitude, lng: longitude};
+        // Create marker at current practice's coordinates
         let marker = new google.maps.Marker({
             position: latLong,
             map: map
         });
+        // Create info window containing name of practice at
         let info = new google.maps.InfoWindow({
             content: rowData[nameIndex]
         });
+        // Add event listener to marker to open window when clicked
         marker.addListener("click",() => {
             info.open(map, marker);
+            // Move map center to this marker
+            map.panTo(marker.getPosition());
         })
     }
 }
