@@ -20,7 +20,7 @@ include_once "../src/get_hospital_array.php";
         <div class="row table-responsive">
             <table id="data-table" class="table">
                 <?php
-                $practice_array = get_hospital_array();
+                $practice_array = get_hospital_array(true);
                 $header_array = $practice_array[0];
                 echo "<thead>";
                 echo "<tr>";
