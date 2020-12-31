@@ -1,4 +1,5 @@
 let map;
+let currentInfo;
 
 function initMap(){
     map = new google.maps.Map(document.getElementById("map"),
@@ -37,9 +38,18 @@ function getMarkers(){
         });
         // Add event listener to marker to open window when clicked
         marker.addListener("click",() => {
+            try {
+                currentInfo.close();
+            }
+            // If no marker has been set, trying to close it will throw an error, but the rest of the
+            // process should be completed anyway
+            catch (error){
+
+            }
             info.open(map, marker);
             // Move map center to this marker
             map.panTo(marker.getPosition());
+            currentInfo = info;
         })
     }
 }
