@@ -3,7 +3,6 @@ include_once "../src/get_hospital_array.php";
 ?>
 <head>
     <title>Data</title>
-    <link href="../assets/css/data.css"  rel="stylesheet"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous" />
 
 </head>
@@ -14,11 +13,11 @@ include_once "../src/get_hospital_array.php";
     ?>
 
     <div class="container">
-        <div class="row">
-            <div id="map" class="vh-100"></div>
+        <div class="row h-100">
+            <div id="map"></div>
         </div>
 
-        <div class="row">
+        <div class="row table-responsive">
             <table id="data-table" class="table">
                 <?php
                 $practice_array = get_hospital_array();
