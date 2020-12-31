@@ -28,6 +28,7 @@ function getMarkers(){
         // Create marker at current practice's coordinates
         let marker = new google.maps.Marker({
             position: latLong,
+            label: (i+1).toString(),
             map: map
         });
         // Create info window containing name of practice at
