@@ -12,9 +12,27 @@ include_once "../src/get_towns_average_array.php";
 include_once "header.php";
 ?>
 
-<?php
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">Town name</th>
+        <th scope="col">PM<small>2.5</small></th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php
 
-?>
+    $town_array = get_towns_average_array();
+
+    foreach ($town_array as $name => $density){
+        echo "<tr>";
+        echo "<td>$name</td>";
+        echo "<td>$density</td>";
+        echo "</tr>";
+    }
+    ?>
+    </tbody>
+</table>
 
 
 <?php
