@@ -10,7 +10,7 @@ using COMP2001_Authentication_API.Models;
 
 namespace COMP2001_Authentication_API.Controllers
 {
-    [Route("api/v1/[controller]")]
+    [Route("api/v1/user")]
     [ApiController]
     public class UsersController : ControllerBase
     {
