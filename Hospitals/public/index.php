@@ -18,7 +18,7 @@ include_once "header.php";
 
     <p>The original dataset used can be found <a href="https://plymouth.thedata.place/dataset/air-quality-data">here</a>.</p>
 
-    <p>Finally, if you wish to inspect the data in JSON-LD format, please click <a href="practices.php">here</a>.</p>
+    <p>Finally, if you wish to inspect the data in JSON-LD format, please click <a href="../practices/index.php">here</a>.</p>
 </section>
 
 <?php
