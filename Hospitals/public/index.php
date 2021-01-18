@@ -16,7 +16,7 @@ include_once "header.php";
     or check the average for each town in the wider Plymouth area <a href="data.php">here.</a> A postcode lookup is
     also available if you want to check the quality of your local practice.</p>
 
-    <p>The original dataset used can be found <a href="https://plymouth.thedata.place/dataset/air-quality-data">here</a>.</p>
+    <p>The original dataset used can be found <a href="https://plymouth.thedata.place/dataset/air-quality-data">here</a>, available under the <a href="http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">Open Government Licence</a> .</p>
 
     <p>Finally, if you wish to inspect the data in JSON-LD format, please click <a href="../practices/index.php">here</a>.</p>
 </section>
