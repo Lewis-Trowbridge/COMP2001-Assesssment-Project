@@ -19,8 +19,15 @@ namespace COMP2001_Authentication_API.Models
             parameters[4] = new SqlParameter("@response_message", "");
             parameters[4].Direction = System.Data.ParameterDirection.Output;
             parameters[4].Size = 100;
-            Database.ExecuteSqlRaw("EXEC register @first_name, @last_name, @email, @password, @response_message OUTPUT", parameters);
-            responseMessage = (string)parameters[4].Value;
+            try
+            {
+                Database.ExecuteSqlRaw("EXEC register @first_name, @last_name, @email, @password, @response_message OUTPUT", parameters);
+                responseMessage = (string)parameters[4].Value;
+            }
+            catch (SqlException e)
+            {
+                responseMessage = "404";
+            }
         }
 
         public bool Validate(Users userToValidate)
