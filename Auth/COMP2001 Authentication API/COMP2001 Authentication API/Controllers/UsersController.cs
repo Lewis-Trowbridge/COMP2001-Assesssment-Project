@@ -29,7 +29,7 @@ namespace COMP2001_Authentication_API.Controllers
             {
                 bool validated = GetValidation(user);
                 Dictionary<string, bool> validatedDict = new Dictionary<string, bool>();
-                validatedDict.Add("validated", validated);
+                validatedDict.Add("verified", validated);
                 return new JsonResult(validatedDict);
             }
             else
