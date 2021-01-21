@@ -1,8 +1,9 @@
-<html lang="en">
 <?php
 include_once "../src/get_closest_practice.php";
 ?>
 
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Postcode</title>

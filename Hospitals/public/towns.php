@@ -2,6 +2,7 @@
 include_once "../src/get_towns_average_array.php";
 ?>
 
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">

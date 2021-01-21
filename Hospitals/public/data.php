@@ -1,6 +1,7 @@
 <?php
 include_once "../src/get_hospital_array.php";
 ?>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 
