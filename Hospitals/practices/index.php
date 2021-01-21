@@ -7,6 +7,6 @@ $practice_objects = get_practice_object_array();
 header("Content-Type: application/json");
 $context_array = json_decode($context_string);
 foreach ($practice_objects as $practice_object){
-    $context_array->places[] = $practice_object;
+    $context_array->practices[] = $practice_object;
 }
 echo json_encode($context_array);

@@ -1,6 +1,6 @@
 {
   "@context": {
-    "places": "https://schema.org/Place",
+    "practices": "https://schema.org/Place",
     "name": "https://schema.org/name",
     "description": "https://schema.org/description",
     "address": "https://schema.org/PostalAddress",
@@ -22,5 +22,5 @@
       "@type": "https://schema.org/Number"
     }
   },
-  "places": []
+  "practices": []
 }
