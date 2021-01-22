@@ -28,7 +28,7 @@ include_once "header.php";
     </div>
     <div class="row">
         <h2>Where did the data come from?</h2>
-        <p>The data was sourced from <a href="https://plymouth.thedata.place/dataset/air-quality-data">Data Plymouth</a>, obtained by <a href="https://plymouth.thedata.place/organization/green-minds">Green Minds</a> and the <a href="https://www.blf.org.uk/air-quality">British Lung Foundation</a> under the <a href="http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">Open Government Licence</a>.</p>
+        <p>The data was sourced from <a href="https://plymouth.thedata.place/dataset/air-quality-data">Data Plymouth</a>, obtained by <a href="https://plymouth.thedata.place/organization/green-minds">Green Minds</a> and the <a href="https://www.blf.org.uk/air-quality">British Lung Foundation</a> under the <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">Open Government Licence</a>.</p>
     </div>
     <div class="row">
         <h2>Attributions</h2>
