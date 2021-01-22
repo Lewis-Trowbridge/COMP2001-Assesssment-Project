@@ -16,7 +16,7 @@ include_once "header.php";
     <div class="row">
         <h2>What is PM<sub>2.5</sub>?</h2>
         <p>PM<sub>2.5</sub> means "particulate matter" that takes up 2.5 microns or less - according to the UK government:</p>
-        <figure>
+        <figure role="group">
             <blockquote class="blockquote">
                 <p>Particulate matter (PM) is a term used to describe the mixture of solid particles and liquid droplets in the air.  It can be either human-made or naturally occurring. Some examples include dust, ash and sea-spray. Particulate matter (including soot) is emitted during the combustion of solid and liquid fuels, such as for power generation, domestic heating and in vehicle engines. Particulate matter varies in size (i.e. the diameter or width of the particle). PM2.5 means the mass per cubic metre of air of particles with a size (diameter) generally less than 2.5 micrometres (µm). PM2.5 is also known as fine particulate matter  (2.5 micrometres is one 400th of a millimetre).</p>
             </blockquote>
