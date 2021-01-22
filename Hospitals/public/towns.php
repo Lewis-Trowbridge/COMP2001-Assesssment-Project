@@ -29,9 +29,10 @@ include_once "header.php";
             $town_array = get_towns_average_array();
 
             foreach ($town_array as $name => $density){
+                $formatted_density = number_format($density, 2);
                 echo "<tr>";
                 echo "<td>$name</td>";
-                echo "<td>$density</td>";
+                echo "<td>$formatted_density</td>";
                 echo "</tr>";
             }
             ?>
