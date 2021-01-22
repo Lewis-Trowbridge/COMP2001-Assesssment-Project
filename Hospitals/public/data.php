@@ -17,7 +17,7 @@ include_once "header.php";
 ?>
 
 <div class="container">
-    <div class="row h-100">
+    <div class="row vh-100">
         <div id="map"></div>
     </div>
 
