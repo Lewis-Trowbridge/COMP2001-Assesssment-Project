@@ -18,7 +18,7 @@
       "@type": "https://schema.org/Number"
     },
     "pm2.5": {
-      "@id": "https://schema.org/ratingValue",
+      "@id": "https://schema.org/Quantity",
       "@type": "https://schema.org/Number"
     }
   },
